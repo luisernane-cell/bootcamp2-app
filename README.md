@@ -8,14 +8,14 @@ Luis Ernane Oliveira de Alencar RA: 22601006
 
 | Item | Link |
 |------|------|
-| Repositório GitHub | https://github.com/SEU-USUARIO/bootcamp2-app |
-| Aplicação no ar (GitHub Pages) | https://SEU-USUARIO.github.io/bootcamp2-app/ |
-| Repositório no Docker Hub | https://hub.docker.com/r/SEU-USUARIO-DOCKERHUB/bootcamp2-app |
+| Repositório GitHub | https://github.com/luisernane-cell/bootcamp2-app |
+| Aplicação no ar (GitHub Pages) | https://luisernane-cell.github.io/bootcamp2-app/ |
+| Repositório no Docker Hub | https://hub.docker.com/r/luisernane/bootcamp2-app |
 
 ## Rodar com Docker (comando para o avaliador)
 
 ```bash
-docker run -d -p 8080:80 --name minha-estante SEU-USUARIO-DOCKERHUB/bootcamp2-app:1.1
+docker run -d -p 8080:80 --name minha-estante luisernane/bootcamp2-app:1.1
 ```
 
 Depois, abra http://localhost:8080. Para parar e remover: `docker rm -f minha-estante`.
@@ -68,8 +68,8 @@ redesenhar o cartão sem chamar a Open Library de novo, mais o status de leitura
 | Update (bônus) | Seletor de status em cada livro da estante | `mudarStatus()` → `update` |
 | Delete | Botão "Tirar da estante" em cada livro da estante | `removerLivro()` → `delete` |
 
-**Limitação conhecida:** as políticas de acesso (RLS) da tabela estão abertas para o papel
-`anon`. Isso significa que qualquer pessoa com a URL do projeto e a chave pública pode ler,
+**Limitação conhecida:** as políticas de acesso (RLS) da tabela estão abertas para qualquer
+visitante (papel `public`, que inclui o `anon`). Isso significa que qualquer pessoa com a URL do projeto e a chave pública pode ler,
 criar, alterar e apagar registros, e que existe uma única estante compartilhada por todos os
 visitantes. A chave pública está no código de propósito (ela foi feita para o frontend); quem
 protegeria os dados seriam políticas mais restritas. O próximo passo seria usar o Supabase Auth
@@ -93,7 +93,7 @@ e uma coluna `user_id`, com políticas que deixem cada pessoa ver e alterar apen
 **Com Docker (recomendado):**
 
 ```bash
-git clone https://github.com/SEU-USUARIO/bootcamp2-app
+git clone https://github.com/luisernane-cell/bootcamp2-app
 cd bootcamp2-app
 docker build -t bootcamp2-app .
 docker run -d -p 8080:80 --name meu-app bootcamp2-app
@@ -159,9 +159,8 @@ O repositório no Docker Hub tem três tags:
 | `1.1` | Melhoria: configuração própria do Nginx (`nginx.conf`) com compressão gzip, cache de CSS/JS e cabeçalhos de segurança, além de `HEALTHCHECK` no Dockerfile. Com ele, o `docker ps` mostra `(healthy)` quando o site está respondendo. |
 | `latest` | Aponta para a `1.1`. |
 
-Evidência: [`docs/sq2-tags-dockerhub.png`](docs/sq2-tags-dockerhub.png)
+Evidência: aba Tags em https://hub.docker.com/r/luisernane/bootcamp2-app/tags
 
-![Tags no Docker Hub](docs/sq2-tags-dockerhub.png)
 
 ### SQ3 · Descrição no Docker Hub
 
@@ -169,15 +168,15 @@ O overview do repositório no Docker Hub descreve a aplicação, traz o comando 
 para copiar e o link deste repositório. O texto usado está em
 [`docs/dockerhub-overview.md`](docs/dockerhub-overview.md).
 
-Evidência: https://hub.docker.com/r/SEU-USUARIO-DOCKERHUB/bootcamp2-app
+Evidência: https://hub.docker.com/r/luisernane/bootcamp2-app
 
 ### SQ4 · Explorando a orquestração
 
 Dois containers da mesma imagem rodando ao mesmo tempo, nas portas 8080 e 8081:
 
 ```bash
-docker run -d -p 8080:80 --name estante-a SEU-USUARIO-DOCKERHUB/bootcamp2-app:1.1
-docker run -d -p 8081:80 --name estante-b SEU-USUARIO-DOCKERHUB/bootcamp2-app:1.1
+docker run -d -p 8080:80 --name estante-a luisernane/bootcamp2-app:1.1
+docker run -d -p 8081:80 --name estante-b luisernane/bootcamp2-app:1.1
 docker ps
 ```
 
