@@ -14,8 +14,8 @@ import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 // A chave anon/publishable FOI FEITA para ficar no frontend: quem protege
 // os dados são as políticas RLS da tabela, não o segredo da chave.
 // NUNCA coloque aqui a chave service_role/secret.
-const SUPABASE_URL = "https://SEU-PROJETO.supabase.co";
-const SUPABASE_CHAVE = "SUA_CHAVE_ANON";
+const SUPABASE_URL = "https://ovmjlqcxqgrlbhvivkrt.supabase.co";
+const SUPABASE_CHAVE = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im92bWpscWN4cWdybGJodml2a3J0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTI5ODQ3NzMsImV4cCI6MjEwODU2MDc3M30.BeXYNdlE88cq94GgFXpFHr_eS3dSPrOne6Udh6ndgyM";
 const TABELA = "estante";
 
 const supabase = createClient(SUPABASE_URL, SUPABASE_CHAVE);
