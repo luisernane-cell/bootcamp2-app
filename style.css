@@ -207,9 +207,16 @@ a:focus-visible {
   color: var(--texto-suave);
 }
 
-.livro a {
-  align-self: flex-start;
+/* Ações no pé do cartão: ficam alinhadas na base mesmo com títulos longos. */
+.acoes {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.55rem;
   margin-top: auto;
+}
+
+.livro a {
   padding-bottom: 1px;
   border-bottom: 1px solid rgba(240, 184, 73, 0.35);
   color: var(--ouro);
@@ -220,6 +227,119 @@ a:focus-visible {
 
 .livro a:hover {
   border-bottom-color: var(--ouro);
+}
+
+/* Botão de guardar: contorno dourado, discreto ao lado da capa. */
+.botao-guardar {
+  padding: 0.4rem 0.75rem;
+  border: 1px solid var(--ouro);
+  border-radius: 4px;
+  background: transparent;
+  color: var(--ouro);
+  font-family: inherit;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.botao-guardar:hover:not(:disabled) {
+  background-color: var(--ouro);
+  color: #1c1403;
+}
+
+.botao-guardar:disabled {
+  cursor: default;
+}
+
+.botao-guardar.guardado {
+  border-color: var(--borda);
+  color: var(--texto-suave);
+}
+
+/* Seletor de status de leitura (Quero ler / Lendo / Lido). */
+.seletor-status {
+  padding: 0.35rem 0.5rem;
+  border: 1px solid var(--borda);
+  border-radius: 4px;
+  background-color: var(--carta);
+  color: var(--texto);
+  font-family: inherit;
+  font-size: 0.75rem;
+  cursor: pointer;
+}
+
+.botao-remover {
+  padding: 0;
+  border: none;
+  background: none;
+  color: var(--texto-suave);
+  font-family: inherit;
+  font-size: 0.75rem;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+
+.botao-remover:hover:not(:disabled) {
+  color: var(--erro);
+}
+
+.botao-guardar:focus-visible,
+.seletor-status:focus-visible,
+.botao-remover:focus-visible {
+  outline: 3px solid var(--ouro);
+  outline-offset: 3px;
+}
+
+/* ---------- Seção "Minha estante" ---------- */
+
+.secao-estante {
+  margin-top: 4.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--borda);
+}
+
+.estante-topo {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.4rem 1rem;
+}
+
+.estante-topo h2 {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: 1.75rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.resumo-estante {
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--texto-suave);
+}
+
+.status-estante {
+  margin: 1rem 0 1.5rem;
+}
+
+.secao-estante .grade {
+  margin-top: 1.5rem;
+}
+
+/* Some da tela, mas continua sendo lido por leitores de tela. */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 /* ---------- Placeholder enquanto a busca carrega ---------- */

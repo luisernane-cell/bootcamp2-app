@@ -19,7 +19,7 @@
     <h1>Minha Estante</h1>
     <p class="subtitulo">
       Procure por título ou por autor no catálogo aberto da Open Library
-      e monte sua próxima leitura.
+      e guarde na sua estante o que quer ler.
     </p>
 
     <div class="busca">
@@ -36,26 +36,51 @@
   </header>
 
   <main>
-    <!--
-      Esta linha é onde a aplicação conversa com o usuário: "procurando…",
-      "nada encontrado", "a API não respondeu". O aria-live faz o leitor de
-      tela anunciar a mudança sem precisar recarregar a página.
-    -->
-    <p id="status" class="status" role="status" aria-live="polite">
-      Comece digitando o nome de um livro.
-    </p>
+    <!-- ===== Resultados da busca (API da Open Library) ===== -->
+    <section aria-labelledby="titulo-busca">
+      <h2 id="titulo-busca" class="sr-only">Resultados da busca</h2>
 
-    <!-- Os cartões de resultado são criados pelo JavaScript e injetados aqui. -->
-    <div id="resultados" class="grade"></div>
+      <!--
+        Esta linha é onde a aplicação conversa com o usuário: "procurando…",
+        "nada encontrado", "a API não respondeu". O aria-live faz o leitor de
+        tela anunciar a mudança sem precisar recarregar a página.
+      -->
+      <p id="status" class="status" role="status" aria-live="polite">
+        Comece digitando o nome de um livro.
+      </p>
+
+      <!-- Os cartões de resultado são criados pelo JavaScript e injetados aqui. -->
+      <div id="resultados" class="grade"></div>
+    </section>
+
+    <!-- ===== Minha estante (banco de dados no Supabase) ===== -->
+    <section class="secao-estante" aria-labelledby="titulo-estante">
+      <div class="estante-topo">
+        <h2 id="titulo-estante">Minha estante</h2>
+        <p id="resumo-estante" class="resumo-estante"></p>
+      </div>
+
+      <p id="status-estante" class="status status-estante" role="status" aria-live="polite">
+        Carregando sua estante…
+      </p>
+
+      <div id="estante" class="grade"></div>
+    </section>
   </main>
 
   <footer class="pe">
     Dados do catálogo aberto da
     <a href="https://openlibrary.org" target="_blank" rel="noopener">Open Library</a>,
-    mantido pelo Internet Archive.
+    mantido pelo Internet Archive. Estante guardada no
+    <a href="https://supabase.com" target="_blank" rel="noopener">Supabase</a>.
   </footer>
 
-  <!-- defer = o navegador só executa o script depois de montar o HTML acima. -->
-  <script src="script.js" defer></script>
+  <!--
+    type="module" permite usar "import" dentro do script.js (necessário para a
+    biblioteca do Supabase). Módulos já são executados depois do HTML, como o defer.
+    Atenção: módulos não rodam abrindo o arquivo direto (file://). Use o Live
+    Server, o GitHub Pages ou o container Docker.
+  -->
+  <script type="module" src="script.js"></script>
 </body>
 </html>
