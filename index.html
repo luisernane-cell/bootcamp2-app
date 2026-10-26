@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Minha Estante — busca de livros</title>
+
+  <!-- Tipografia via Google Fonts. Se a internet falhar, cai para Georgia e a fonte do sistema. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,600&display=swap" rel="stylesheet">
+
+  <!-- Caminho relativo, sem barra na frente. Com "/style.css" o GitHub Pages quebra. -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="cabecalho">
+    <h1>Minha Estante</h1>
+    <p class="subtitulo">
+      Procure por título ou por autor no catálogo aberto da Open Library
+      e monte sua próxima leitura.
+    </p>
+
+    <div class="busca">
+      <label class="rotulo" for="campo-busca">Título ou autor</label>
+      <div class="busca-linha">
+        <input
+          id="campo-busca"
+          type="search"
+          placeholder="Duna, Clarice Lispector, 1984…"
+          autocomplete="off">
+        <button id="botao-buscar" type="button">Procurar</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!--
+      Esta linha é onde a aplicação conversa com o usuário: "procurando…",
+      "nada encontrado", "a API não respondeu". O aria-live faz o leitor de
+      tela anunciar a mudança sem precisar recarregar a página.
+    -->
+    <p id="status" class="status" role="status" aria-live="polite">
+      Comece digitando o nome de um livro.
+    </p>
+
+    <!-- Os cartões de resultado são criados pelo JavaScript e injetados aqui. -->
+    <div id="resultados" class="grade"></div>
+  </main>
+
+  <footer class="pe">
+    Dados do catálogo aberto da
+    <a href="https://openlibrary.org" target="_blank" rel="noopener">Open Library</a>,
+    mantido pelo Internet Archive.
+  </footer>
+
+  <!-- defer = o navegador só executa o script depois de montar o HTML acima. -->
+  <script src="script.js" defer></script>
+</body>
+</html>
