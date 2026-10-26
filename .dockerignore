@@ -1,0 +1,25 @@
+# Nada disto é necessário para servir a aplicação.
+# Fica fora do "contexto de build" enviado ao Docker.
+
+# Controle de versão e configurações do editor
+.git
+.gitignore
+.github
+.vscode
+.idea
+.DS_Store
+Thumbs.db
+
+# Documentação, prints e rascunhos
+README.md
+docs/
+rascunhos/
+*.log
+
+# Arquivos do próprio Docker e do banco
+Dockerfile
+.dockerignore
+supabase/
+
+# Dependências locais, se um dia existirem
+node_modules/
